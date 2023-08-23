@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Post from "./Post";
 import NewPost from "./NewPost";
+import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 
 function PostsList() {
