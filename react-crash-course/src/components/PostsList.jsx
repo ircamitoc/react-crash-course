@@ -1,3 +1,5 @@
+import Post from "./Post";
+
 function PostsList() {
   return (
     <ul>
