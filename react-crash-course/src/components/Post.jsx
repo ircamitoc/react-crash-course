@@ -1,3 +1,5 @@
+import classes from "./Post.module.css";
+
 function Post(props) {
   return (
     <li className={classes.port}>
