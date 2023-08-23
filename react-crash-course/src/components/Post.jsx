@@ -9,4 +9,4 @@ function Post(props) {
   );
 }
 
-export default App;
+export default Post;
