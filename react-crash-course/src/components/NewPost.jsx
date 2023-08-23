@@ -1,4 +1,4 @@
-import classes from "NewPost.module.css";
+import classes from "./NewPost.module.css";
 
 function NewPost() {
   return (
