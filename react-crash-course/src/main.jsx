@@ -1,27 +1,36 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes } from "react-router-dom";
+import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Posts from "./components/routes/Posts";
-import NewPost from "./components/routes/NewPost";
+
+import Posts, { loader as postsLoader } from "./components/routes/Posts";
+import NewPost, { action as newPostAction } from "./components/routes/NewPost";
+import PostDetails, {
+  loader as postDetailsLoader,
+} from "./components/routes/PostDetails";
 import RootLayout from "./components/routes/RootLayout";
 import "./index.css";
 
-const routes = [
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />, // Ensure that the header is in RootLayout
+    element: <RootLayout />,
     children: [
       {
         path: "/",
         element: <Posts />,
-        children: [{ path: "/create-post", element: <NewPost /> }],
+        loader: postsLoader,
+        children: [
+          { path: "/create-post", element: <NewPost />, action: newPostAction },
+          {
+            path: "/:postId",
+            element: <PostDetails />,
+            loader: postDetailsLoader,
+          },
+        ],
       },
     ],
   },
-];
-
-const router = createBrowserRouter(routes);
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
